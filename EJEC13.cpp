@@ -1,3 +1,4 @@
+
 #include <iostream>
 using namespace std;
 void mistrcpy(string str1[], string str2[] , int N) {
