@@ -1,57 +1,31 @@
 #include <iostream>
 using namespace std;
-bool Balance(char array[],int N) {
-	int primeraAparicion ,ultimaAparicion; 
-	 for (int i = 0; i < N; ++i) {
-        if (array[i] == '(' or  array[i] == ')') {
-            primeraAparicion = i;
-            break;  
+int cadena_Numero(char A[], int N) {
+    int numero = 0;
+    for (int i = 0; i < N; i++) {
+        if (isdigit(A[i])) {
+            numero = numero * 10 + (A[i] - '0');
         }
     }
-
-    for (int i = N - 1; i >= 0; --i) {
-        if (array[i] == '(' or array[i] == ')' ) {
-            ultimaAparicion = i;
-            break;  
-    }
-	}
-    
-    if(array[primeraAparicion]!= '(' ){
-    	return false;
-	} 
-	if(array[ultimaAparicion]!= ')' ){
-		return false;
-	}
-    
-    int balance = 0;
-    for (int i=0;i<N;i++) {
-        if (array[i]== '(') {
-            balance++; 
-        } else if (array[i]== ')') {
-            balance--;
-        }
-    }
-    if(balance != 0){
-          return false;
-    } else {
-          return true;
-    }
+    return numero;
 }
 
 int main() {
     char A[100];
-    int N;
-    cout<<"Ingrese el tamanio del arreglo:"<<endl;
-    cin >> N;
-    cout <<"Ingrese los elementos del arreglo:" << endl;
-    for(int i=0;i<N;i++){
-    cin >> A[i];
+    int cont = 0; 
+    int N ,num;
+
+    cout << "Ingrese los digitos de su numero (escriba '/' para terminar):" << endl;
+    for (int i = 0; i < 100; i++) {
+        cin >> A[i];
+        if (A[i] == '/') {
+            break;
+        }
+        cont++;
     }
-    bool parentesisb = Balance(A,N);
-    if (parentesisb) {
-        cout << "Los parentesis estan bien balanceados." << endl;
-    } else {
-        cout << "Los parentesis no estan bien balanceados." << endl;
-    }
+    num = cadena_Numero(A, cont);
+    N = num + 2;
+    cout << "El numero " << num <<" sumado mas 2 es " << N << endl;
+
     return 0;
 }
