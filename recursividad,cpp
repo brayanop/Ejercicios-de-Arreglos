@@ -1,0 +1,17 @@
+#include<iostream>
+#include <cmath>
+using namespace std;
+double calcularTangente(double);
+int main(){
+	double N;
+	cout<<"Introduce el angulo :" ;
+	cin >> N;
+	cout << endl;
+	double tangente = calcularTangente(N);
+	cout << "La Tangente es: " << tangente;
+	return 0;
+}
+
+double calcularTangente(double x){
+	return sin(x)/cos(x);
+}
